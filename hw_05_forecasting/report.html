@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Static Visualization Report</title>
+    <style>
+        .section { margin-bottom: 40px; }
+        .plots-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .plot { flex: 1; min-width: 300px; border: 1px solid #ddd; padding: 10px; }
+        img { width: 100%; height: 500px; object-fit: contain;}
+
+        /* Table styling */
+        .results-table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .results-table th, .results-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .results-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .results-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        .best-value {
+            background-color: #e6f7e6;
+            font-weight: bold;
+        }
+        .worst-value {
+            background-color: #ffebee;
+        }
+        .table-caption {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Countries Scatter Plots -->
+    <div class="section">
+        <h2>Countries Scatter Plots</h2>
+        <div class="plots-container">
+            <div class="plot">
+                <img src="plots/bra.png" alt="Brazil">
+                <img src="plots/fra.png" alt="France">
+                <img src="plots/jap.png" alt="Japan">
+                <img src="plots/new.png" alt="New Zealand">
+                <img src="plots/pol.png" alt="Polnad">
+                <img src="plots/sou.png" alt="South Africa">
+                <img src="plots/swe.png" alt="Sweden">
+                <img src="plots/ukr.png" alt="Ukraine">
+            </div>
+        </div>
+    </div>
+
+    <!-- AR Model -->
+    <div class="section">
+        <h2>AR Model Plots</h2>
+        <div class="plots-container">
+            <div class="plot">
+                <img src="plots/bra_ar.png" alt="AR Brazil">
+                <img src="plots/jap_ar.png" alt="AR Japan">
+                <img src="plots/pol_ar.png" alt="AR Poland">
+            </div>
+        </div>
+    </div>
+
+    <!-- ARIMA Model -->
+    <div class="section">
+        <h2>ARIMA Model Plots</h2>
+        <div class="plots-container">
+            <div class="plot">
+                <img src="plots/bra_arima.png" alt="ARIMA Brazil">
+                <img src="plots/jap_arima.png" alt="ARIMA Japan">
+                <img src="plots/pol_arima.png" alt="ARIMA Poland">
+            </div>
+        </div>
+    </div>
+
+    <!-- SARIMA Model -->
+    <div class="section">
+        <h2>SARIMA Model Plots</h2>
+        <div class="plots-container">
+            <div class="plot">
+                <img src="plots/bra_sarima.png" alt="SARIMA Brazil">
+                <img src="plots/jap_sarima.png" alt="SARIMA Japan">
+                <img src="plots/pol_sarima.png" alt="SARIMA Poland">
+            </div>
+        </div>
+    </div>
+
+    <!-- VAR Model -->
+    <div class="section">
+        <h2>VAR Model Plots</h2>
+        <div class="plots-container">
+            <div class="plot">
+                <img src="plots/bra_var.png" alt="VAR Brazil">
+                <img src="plots/jap_var.png" alt="VAR Japan">
+                <img src="plots/pol_var.png" alt="VAR Poland">
+            </div>
+        </div>
+    </div>
+    
+     <!-- Model Comparison Table -->
+     <div class="section">
+        <h2>Model Performance Comparison</h2>
+        <div class="table-caption">Mean Absolute Error (MAE) Comparison</div>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>AR</th>
+                    <th>ARIMA</th>
+                    <th>SARIMA</th>
+                    <th>VAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Brazil</td>
+                    <td>0.301</td>
+                    <td class="best-value">0.291</td>
+                    <td class="worst-value">1.460</td>
+                    <td class="worst-value">1.428</td>
+                </tr>
+                <tr>
+                    <td>Poland</td>
+                    <td class="best-value">0.733</td>
+                    <td>0.743</td>
+                    <td class="worst-value">1.612</td>
+                    <td>1.428</td>
+                </tr>
+                <tr>
+                    <td>Japan</td>
+                    <td>0.676</td>
+                    <td class="best-value">0.650</td>
+                    <td class="worst-value">1.395</td>
+                    <td>1.428</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 15px; color: #666;">
+            <em>Note: Lower MAE values indicate better performance. Highlighted in green (best) and red (worst) per country.</em>
+        </div>
+    </div>
+</body>
+</html>
